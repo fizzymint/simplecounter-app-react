@@ -1,0 +1,28 @@
+.Display{
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 17rem;
+    font-size: 4em;
+    font-weight: 800;
+    transition: all 0.5s ease-out;
+    word-break: break-all;
+    text-align: right;
+}
+
+.Light{
+    color: #2F2F2F;
+    background: #E7E9EB;
+    box-shadow:  16px 16px 32px #c4c6c8, 
+                -16px -16px 32px #ffffff;
+}
+
+.Dark{
+    color: #E7E9EB;
+    background: #2F2F2F;
+    box-shadow:  16px 16px 32px #171616, 
+                -16px -16px 32px #505050;
+}

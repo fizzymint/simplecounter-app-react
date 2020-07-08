@@ -1,0 +1,58 @@
+.Memory{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.Buttons{
+    width: 6rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.MemoryList{
+    display: flex;
+    justify-content: flex-end;
+    width: calc(100% - 7rem);
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    padding: 1rem;
+    border-radius: 1rem;
+    min-height: 3rem;
+    font-size: 0.722222rem;
+}
+.MemoryList li{
+    cursor: pointer;
+}
+
+.Light{
+    color: #2F2F2F;
+    background: #E7E9EB;
+    box-shadow:  5px 5px 17px #d9dbdd, 
+                -5px -5px 17px #f5f7f9;
+}
+
+.MemoryList li:not(:last-child){
+    border-right: 1px solid #2F2F2F;
+    margin-right: 1rem;
+    padding-right: 1rem;
+}
+
+.Dark{
+    color: #E7E9EB;
+    background: #2F2F2F;
+    box-shadow:  5px 5px 17px #171616, 
+                -5px -5px 17px #505050;
+}
+
+.Dark.MemoryList li:not(:last-child){
+    border-right: 1px solid #E7E9EB;
+    margin-right: 1rem;
+    padding-right: 1rem;
+}

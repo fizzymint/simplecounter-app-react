@@ -1,0 +1,46 @@
+.Button{
+    border: none;
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    border-radius: 1rem;
+    
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.Add {
+    font-size: 4em;
+}
+
+.Subtract{
+    font-size: 2em;
+}
+
+.Round{
+    border-radius: 100%;
+}
+
+.Light{
+    color: #2F2F2F;
+    background: linear-gradient(145deg, #f7f9fb, #d0d2d4);
+    box-shadow:  0.25em 0.25em 0.5em #c4c6c8, 
+                -0.25em -0.25em 0.5em #ffffff;
+}
+.Light:hover{
+    background: linear-gradient(145deg, #d0d2d4, #f7f9fb);
+    box-shadow:  0.25em 0.25em 0.5em #c4c6c8, 
+                -0.25em -0.25em 0.5em #ffffff;
+}
+
+.Dark{
+    color: #E7E9EB;
+    background: linear-gradient(145deg, #424242, #161616);
+    box-shadow:  0.25em 0.25em 0.5em #171616, 
+                -0.25em -0.25em 0.5em #505050;
+}
+.Dark:hover{
+    background: linear-gradient(145deg, #161616, #424242);
+    box-shadow:  0.25em 0.25em 0.5em #171616, 
+                -0.25em -0.25em 0.5em #505050;
+}

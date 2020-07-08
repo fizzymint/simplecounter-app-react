@@ -1,0 +1,23 @@
+.Layout{
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    transition: background-color 0.5s ease-out;
+    max-width: 23rem;
+    margin: 0 auto;
+}
+
+.Light{
+    background-color: #E7E9EB;
+}
+
+.Dark{
+    background-color: #2F2F2F;
+}
+
+.Buttons{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
