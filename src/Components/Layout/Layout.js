@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 
 import * as utility from '../../utility';
 
@@ -10,10 +10,29 @@ import Toggle from '../Toggle/Toggle';
 import DarkMode from '../../DarkMode';
 
 class Layout extends Component{
-    state = {
-        counter : 0,
-        memory : [],
-        darkMode: false,
+
+    constructor(props) {
+        super(props);
+
+        const counter = JSON.parse(localStorage.getItem('counter')) || 0;
+        const memory = [];
+        const memoryLS = JSON.parse(localStorage.getItem('memory'));
+        if(memoryLS){
+            memoryLS.map((el) => {
+                memory.push(el);
+            })
+        }
+        const darkmode = localStorage.getItem('darkmode') == "true" || false;
+        this.state ={
+            counter : counter,
+            memory : memory,
+            darkMode : darkmode
+        }
+    }
+
+    updateLS = (memory = this.state.memory, counter = this.state.counter) => {
+        localStorage.setItem('counter', counter);
+        localStorage.setItem('memory', JSON.stringify(memory));
     }
 
     onAddHandler = () => {
@@ -22,6 +41,7 @@ class Layout extends Component{
             ...this.state,
             counter : updateCounter,
         })
+        this.updateLS(undefined , updateCounter);
     }
 
     onSubstractHandler = () => {
@@ -30,6 +50,7 @@ class Layout extends Component{
             ...this.state,
             counter : updateCounter,
         })
+        this.updateLS(undefined , updateCounter);
     }
     onToggleClickedHandler = () => {
         const updateDarkmode = !this.state.darkMode;
@@ -37,6 +58,7 @@ class Layout extends Component{
             ...this.state,
             darkMode : updateDarkmode,
         })
+        localStorage.setItem('darkmode', updateDarkmode);
     }
     onMemoryItemClickedHandler = (itemId) => {
         const index = this.state.memory.findIndex((el) => {
@@ -49,7 +71,7 @@ class Layout extends Component{
             counter : newValue[0].value,
             memory : updatedMemory,
         });
-
+        this.updateLS(updatedMemory, newValue[0].value);
     }
     onMemoryButtonClickedHandler = () => {
         const newCounterObj = {
@@ -60,10 +82,16 @@ class Layout extends Component{
         const updatedMemory = [...this.state.memory];
         updatedMemory.push(newCounterObj);
 
+        if(updatedMemory.length >= 6){
+            updatedMemory.shift();
+        }
+
         this.setState({
             ...this.state,
             memory : updatedMemory,
         });
+        console.log('memory')
+        this.updateLS(updatedMemory, undefined);
     }
 
     onLongPressHandler = () => {
@@ -72,6 +100,8 @@ class Layout extends Component{
             memory : [],
             counter : 0,
         });
+        localStorage.removeItem('memory');
+        localStorage.removeItem('counter');
     }
 
     onClearClickedHandler = () => {
@@ -79,6 +109,7 @@ class Layout extends Component{
             ...this.state,
             counter : 0,
         });
+        localStorage.removeItem('counter');
     }
     
     render() {
@@ -89,7 +120,7 @@ class Layout extends Component{
             <DarkMode.Provider value={this.state.darkMode}>
                 <div className={layoutClasses.join(' ')}>
                     <Toggle 
-                        darkmode={this.state.darkMode} 
+                        // darkmode={this.state.darkMode} 
                         clicked={this.onToggleClickedHandler}
                     />
                     <Memory
